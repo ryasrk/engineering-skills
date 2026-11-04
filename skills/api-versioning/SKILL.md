@@ -9,7 +9,7 @@ Design, run, and migrate versioned APIs concurrently without service interruptio
 
 ## Work from the source artefact
 
-1. Read `references/08-api-versioning-inti.md` for the core architecture, routing rules, and Expand-Contract execution phases. Read `references/09-api-checklist-sumber.md` for standard corrections, cutover checklists, and cited RFC specifications.
+1. Read `references/api-versioning-guide.md` for architecture, gateway routing rules, and the 5-phase Expand-Contract procedure. Read `references/api-checklist-and-sources.md` for standard corrections, cutover checklists, and cited RFC specifications.
 2. For OpenAPI specifications: copy `assets/06-OpenAPI-Multi-Versi.md` as the master guide, and instantiate version-specific contracts using `assets/06-OpenAPI-Multi-Versi-V1.md`, `06-OpenAPI-Multi-Versi-V2.md`, and `06-OpenAPI-Multi-Versi-V3.md`.
 3. For gateway and traffic control: configure reverse proxy routes using `assets/06-Routing-Gateway-Nginx.md` and track version compatibility via `assets/06-Matriks-Endpoint-Versi.md`.
 4. For zero-downtime database and schema changes: execute the 5-phase procedure in `assets/06-Runbook-Expand-Contract.md`.

@@ -5,32 +5,23 @@ description: "Use when setting up or auditing engineering documentation end to e
 
 # Engineering documentation playbook
 
-Turn a request into the smallest set of artefacts that can actually be traced, reviewed, and shipped. This skill is the router for a six-part documentation system; load a focused skill when the request has already narrowed to one artefact.
+Turn a request into the smallest set of artefacts that can actually be traced, reviewed, and shipped. This skill is the master router for an end-to-end engineering documentation system; invoke a focused skill when the request narrows to a specific deliverable.
 
 ## Choose the working mode
 
-| Request | Read next |
-| --- | --- |
-| Business goals, scope, KPI, stakeholder sign-off | `brd-writing` |
-| Use cases, acceptance criteria, business rules, OpenAPI contract | `fsd-writing` |
-| Architecture decision, design doc, C4, UI spec, accessibility DoD | `design-docs` |
-| Test strategy, test plan, quality gate, exit criteria, metrics | `qa-docs` |
-| Standup, daily status, blocker escalation, audience-specific reporting | `daily-reporting` |
-| Docs/project tree, monorepo, SemVer, CODEOWNERS, CHANGELOG | `project-structure` |
-| V1/V2/V3 coexistence, deprecation, zero-downtime migration | `api-versioning` |
+Each focused skill is self-contained with its own executable templates in `assets/` and guidelines in `references/`:
 
-For a full programme, work in this order: BRD → FSD → design/ADR → test plan → release artefacts → daily evidence. Keep stable IDs (`BR-...`, `FR-...`, `AC-...`, `TC-...`, `ADR-...`, `api_version`) so a requirements traceability matrix can connect them. Avoid copying requirement prose between artefacts; reference IDs instead.
+| Deliverable | Target Skill | Primary Template |
+| --- | --- | --- |
+| Business goals, scope, KPI, stakeholder sign-off | `brd-writing` | `01-BRD.md` |
+| Use cases, acceptance criteria, business rules, OpenAPI contract | `fsd-writing` | `02-FSD.md` |
+| Architecture decision, design doc, C4, UI spec, accessibility DoD | `design-docs` | `03-Design-Doc.md`, `03-ADR.md` |
+| Test strategy, test plan, quality gate, exit criteria, metrics | `qa-docs` | `04-Test-Plan.md` |
+| Standup, daily status, blocker escalation, audience-specific reporting | `daily-reporting` | `05-Laporan-Harian.md` |
+| Docs/project tree, monorepo, SemVer, CODEOWNERS, CHANGELOG | `project-structure` | `06-Struktur-Folder.md` |
+| V1/V2/V3 coexistence, deprecation, zero-downtime migration | `api-versioning` | `06-OpenAPI-Multi-Versi.md` |
 
-## Shared assets
-
-The repository root contains reusable material:
-
-- `assets/templates/` — 40 Markdown templates with `{{...}}` placeholders and source metadata. Copy the relevant template into the target project, fill every placeholder, and remove the two metadata lines if the target repository does not use that convention.
-- `assets/standards/` — six cited research notes and eight report sections. Read only the note relevant to the current question; they carry the source URLs, conflicts, and explicit limitations.
-- `docs/TEMPLATE-INDEX.md` — when to use each template and how phases depend on each other.
-- `docs/RISET-BEST-PRACTICES.md` — complete narrative report and correction table.
-
-Do not load the whole research corpus into context for a single document. Read the focused note, then the template.
+For a full program, work in this order: BRD → FSD → design/ADR → test plan → release artefacts → daily evidence. Keep stable IDs (`BR-...`, `FR-...`, `AC-...`, `TC-...`, `ADR-...`, `api_version`) so a requirements traceability matrix can connect them. Avoid copying requirement prose between artefacts; reference IDs instead.
 
 ## Non-obvious rules that change decisions
 

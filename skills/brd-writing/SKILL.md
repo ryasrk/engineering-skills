@@ -9,7 +9,7 @@ Produce business-level requirements that a sponsor can approve and downstream te
 
 ## Work from the source artefact
 
-1. Read `references/01-brd.md` for citations, source conflicts, and stated limitations. Read `references/02-brd.md` for the condensed best-practice section.
+1. Read `references/brd-guide.md` for standards context, source conflicts, and condensed best practices.
 2. Copy `assets/01-BRD.md` into the target project. Fill every `{{...}}` placeholder; use `assets/01-RTM.md`, `assets/01-Checklist-Review-BRD.md`, and `assets/01-Pola-Kalimat-Kebutuhan-Bisnis.md` for traceability, review, and requirement phrasing.
 3. Keep a stable `BR-...` ID for each requirement and a matching RTM row. If the user only asks for a review, check the existing document against the checklist instead of replacing it with a fresh template.
 

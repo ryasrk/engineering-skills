@@ -9,7 +9,7 @@ Bridge business requirements into verifiable, testable system behaviors and cont
 
 ## Work from the source artefact
 
-1. Read `references/02-fsd.md` for standards context, research notes, and cited sources. Read `references/03-fsd.md` for condensed best practices.
+1. Read `references/fsd-guide.md` for standards context, acceptance criteria conventions, and condensed best practices.
 2. Copy `assets/02-FSD.md` into the target project. Fill each `{{...}}` placeholder.
 3. Use `assets/02-RTM.md` to map upstream `BR-...` to functional requirements (`FR-...`), acceptance criteria (`AC-...`), and downstream test cases (`TC-...`).
 4. Validate the draft using `assets/02-Checklist-Review.md` before requesting technical and product sign-off.

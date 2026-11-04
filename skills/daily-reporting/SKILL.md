@@ -9,7 +9,7 @@ Deliver high-signal, evidence-backed daily progress reports and asynchronous sta
 
 ## Work from the source artefact
 
-1. Read `references/05-laporan-harian.md` for foundational research and cited guidelines. Read `references/06-laporan-harian.md` for condensed reporting practices.
+1. Read `references/daily-reporting-guide.md` for asynchronous standup guidelines, audience segmentation, and condensed reporting practices.
 2. Copy `assets/05-Laporan-Harian.md` into your documentation or operational repository.
 3. Complete the ten standard sections: TL;DR, completed deliverables (meeting Definition of Done), WIP, blockers with assigned owners, scope/risk changes, event-derived metrics, decisions needed, tomorrow's plan, audience-specific view, and audit trail.
 

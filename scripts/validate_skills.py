@@ -2,19 +2,66 @@
 """
 Comprehensive integrity validator for engineering-skills repository.
 Checks:
-1. Valid SKILL.md frontmatter (name, description).
-2. Name matches directory and follows kebab-case.
-3. Description under 500 characters (DSH and Claude catalog limit).
-4. No unresolved TODO placeholders or angle brackets in metadata.
-5. All references/ and assets/ links in SKILL.md resolve to existing files.
-6. Assets contain valid {{...}} placeholders.
-7. Correct RFC mapping (RFC 8594 = Sunset, RFC 9745 = Deprecation).
+1. Valid SKILL.md frontmatter (name, description, kebab-case).
+2. Description under 500 characters (DeepSeek Harness catalog truncation limit;
+   Claude Code allows up to 1024, but 500 ensures universal cross-platform compatibility).
+3. No unresolved TODO placeholders or angle brackets in metadata.
+4. All relative paths and Markdown links in SKILL.md and references/ resolve on disk.
+5. Router skills reference only valid, existing skill directories.
+6. No machine-local absolute paths or broken research_notes references.
+7. Assets contain valid {{...}} placeholders without broken nested placeholders.
+8. Correct RFC mapping (RFC 8594 = Sunset, RFC 9745 = Deprecation).
 """
 
 import sys
 import re
 from pathlib import Path
 import yaml
+
+
+def check_skill_links_and_references(skill_dir: Path, repo_root: Path) -> list:
+    errors = []
+
+    # Check SKILL.md and files in references/
+    docs_to_check = [skill_dir / "SKILL.md"]
+    ref_dir = skill_dir / "references"
+    if ref_dir.is_dir():
+        docs_to_check.extend(ref_dir.glob("*.md"))
+
+    for doc in docs_to_check:
+        if not doc.is_file():
+            continue
+        content = doc.read_text(encoding="utf-8")
+
+        # 1. Check markdown links [label](path)
+        link_pattern = re.compile(r'\[([^\]]+)\]\(([^)]+)\)')
+        for match in link_pattern.finditer(content):
+            target = match.group(2).strip()
+            if target.startswith(("http://", "https://", "mailto:", "#")):
+                continue
+            clean_target = target.split("#")[0]
+            if not clean_target:
+                continue
+            resolved = (doc.parent / clean_target).resolve()
+            if not resolved.exists():
+                errors.append(f"Broken markdown link '{target}' in {doc.relative_to(repo_root)}")
+
+        # 2. Check explicitly referenced assets/ and references/ paths in backticks
+        ref_pattern = re.compile(r'`((?:\.\./)?(?:assets|references)/[A-Za-z0-9._-]+)`')
+        for match in ref_pattern.finditer(content):
+            rel_path = match.group(1).strip()
+            resolved = (doc.parent / rel_path).resolve()
+            if not resolved.exists():
+                errors.append(f"Broken referenced path `{rel_path}` in {doc.relative_to(repo_root)}")
+
+        # 3. Check for broken legacy references
+        if "catatan-riset-internal" in content:
+            errors.append(f"Unresolved 'catatan-riset-internal' placeholder in {doc.relative_to(repo_root)}")
+        if "research_notes/" in content:
+            errors.append(f"Unresolved 'research_notes/' path reference in {doc.relative_to(repo_root)}")
+
+    return errors
+
 
 def validate_repo(repo_root: Path) -> bool:
     all_ok = True
@@ -30,6 +77,7 @@ def validate_repo(repo_root: Path) -> bool:
         return False
 
     print(f"Validating {len(skill_folders)} skills in {skills_dir}...")
+    skill_names = {f.name for f in skill_folders}
 
     for folder in skill_folders:
         skill_name = folder.name
@@ -78,24 +126,31 @@ def validate_repo(repo_root: Path) -> bool:
             print(f"[{skill_name}] FAIL: Missing description", file=sys.stderr)
             all_ok = False
         elif len(desc) > 500:
-            print(f"[{skill_name}] FAIL: Description exceeds 500 characters ({len(desc)})", file=sys.stderr)
+            print(f"[{skill_name}] FAIL: Description exceeds 500 characters ({len(desc)}). "
+                  f"Enforced to prevent truncation in DeepSeek Harness skill catalog (Claude allows 1024).", file=sys.stderr)
             all_ok = False
 
         if "<" in desc or ">" in desc:
-            print(f"[{skill_name}] FAIL: Description contains angle brackets", file=sys.stderr)
+            print(f"[{skill_name}] FAIL: Description contains angle brackets (< or >)", file=sys.stderr)
             all_ok = False
 
         if "[TODO:" in desc or "[TODO:" in content:
             print(f"[{skill_name}] FAIL: Contains unfinished [TODO: ...]", file=sys.stderr)
             all_ok = False
 
-        # Check that referenced assets/ and references/ files exist
-        ref_matches = re.findall(r"`((?:assets|references)/[A-Za-z0-9._-]+)`", content)
-        for rel in ref_matches:
-            target = folder / rel
-            if not target.exists():
-                print(f"[{skill_name}] FAIL: Referenced path does not exist: {rel}", file=sys.stderr)
-                all_ok = False
+        # Router skill check: verify that skills mentioned in the router table exist
+        if skill_name == "engineering-docs":
+            router_targets = re.findall(r"\|\s*`([a-z0-9-]+)`\s*\|", content)
+            for target_skill in router_targets:
+                if target_skill != "engineering-docs" and target_skill not in skill_names:
+                    print(f"[{skill_name}] FAIL: Router mentions non-existent skill '{target_skill}'", file=sys.stderr)
+                    all_ok = False
+
+        # Check markdown links and path references in SKILL.md and references/
+        link_errors = check_skill_links_and_references(folder, repo_root)
+        for err in link_errors:
+            print(f"[{skill_name}] FAIL: {err}", file=sys.stderr)
+            all_ok = False
 
         # Validate assets
         assets_dir = folder / "assets"
@@ -104,6 +159,10 @@ def validate_repo(repo_root: Path) -> bool:
                 text = asset.read_text(encoding="utf-8")
                 if "{{" not in text:
                     print(f"[{skill_name}] WARNING: Asset {asset.name} does not contain {{{{...}}}} placeholder", file=sys.stderr)
+                # Check for broken nested placeholder {{...{{...}}}}
+                if re.search(r'\{\{[^{}]*\{\{[^{}]*\}\}[^{}]*\}\}', text):
+                    print(f"[{skill_name}] FAIL: Asset {asset.name} contains invalid nested {{{{...{{...}}}}}} placeholder", file=sys.stderr)
+                    all_ok = False
 
         # Standard correction checks for api-versioning and engineering-docs
         if skill_name in ("api-versioning", "engineering-docs"):
@@ -115,6 +174,20 @@ def validate_repo(repo_root: Path) -> bool:
                 all_ok = False
 
         print(f"[{skill_name}] PASS")
+
+    # Global check: no machine-local paths in repository markdown or scripts
+    local_machine_pattern = "/home/" + "ryasr"
+    for path in repo_root.glob("**/*"):
+        if path.is_file() and path.suffix in (".md", ".py", ".sh", ".yml", ".yaml"):
+            if ".git" in path.parts or path.name == "validate_skills.py":
+                continue
+            try:
+                txt = path.read_text(encoding="utf-8")
+                if local_machine_pattern in txt:
+                    print(f"FAIL: Local machine path '{local_machine_pattern}' found in {path.relative_to(repo_root)}", file=sys.stderr)
+                    all_ok = False
+            except Exception:
+                pass
 
     return all_ok
 

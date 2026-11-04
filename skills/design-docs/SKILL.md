@@ -9,7 +9,7 @@ Produce actionable system design documents, decision records, and interface spec
 
 ## Work from the source artefact
 
-1. Read `references/03-desain.md` for foundational research and cited standards. Read `references/04-desain.md` for condensed design best practices.
+1. Read `references/design-guide.md` for architectural decision patterns, C4 model guidance, and condensed design best practices.
 2. For system architecture or RFCs: copy `assets/03-Design-Doc.md` and complete all sections including goals, non-goals, structural design, STRIDE security analysis, observability, and rollback plans.
 3. For discrete architectural decisions: copy `assets/03-ADR.md` (MADR 4.0.0 format). Maintain an immutable, append-only decision record.
 4. For UI/UX component handoffs: use `assets/03-UI-UX-Spec.md` with explicit design tokens and complete state matrices (idle, loading, error, empty, disabled).

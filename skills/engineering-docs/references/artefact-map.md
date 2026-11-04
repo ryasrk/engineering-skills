@@ -59,4 +59,4 @@ Keep one canonical path per artefact. `README.md` links to artefacts; it does no
 | Test plan | Release | Entry/exit criteria met, fail-closed CI gate green, residual risk accepted. |
 | Release | Daily operation | Release evidence and per-version metrics are queryable. |
 
-For the full tree variants and release artefacts, read `../../assets/standards/07-skema-folder-project.md` and `../../docs/TEMPLATE-INDEX.md`.
+For full tree variants and release artefacts, consult the `project-structure` skill (`../../skills/project-structure/references/project-structure-guide.md`) and `../../docs/TEMPLATE-INDEX.md`.

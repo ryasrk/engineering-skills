@@ -9,7 +9,7 @@ Establish clean repository directory layouts, modular boundary separation, and a
 
 ## Work from the source artefact
 
-1. Read `references/07-skema-folder-project.md` for the structural breakdown, monorepo trade-off analysis, and governance rules.
+1. Read `references/project-structure-guide.md` for directory breakdown, monorepo trade-off analysis, and governance rules.
 2. For repository and docs layout: copy `assets/06-Struktur-Folder.md` (for standard repositories) or `assets/06-Struktur-Folder-Monorepo.md` (for multi-package workspaces with tools like pnpm, Nx, or Turborepo).
 3. Use `assets/06-Documentation-Hub.md` to establish the root `docs/README.md` navigation hub.
 4. Establish ownership, releases, and changelog governance using:
@@ -31,7 +31,7 @@ Establish clean repository directory layouts, modular boundary separation, and a
 
 ## Review checklist
 
-- Documentation tree separates editable templates (`templates/`) from canonical project specs (`docs/`).
+- Documentation tree separates editable templates from canonical project specs (`docs/`).
 - `CODEOWNERS` maps all critical infrastructure, security, and schema paths to specific teams.
 - Branch protection prevents direct pushes to `main` and enforces status checks.
 - Release checklist includes unambiguous cutover triggers and automated rollback conditions.
