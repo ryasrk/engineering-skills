@@ -25,6 +25,19 @@ Designed for **DeepSeek Harness**, **Claude Code**, and **Codex**. Each skill is
 
 ---
 
+## Worked Example (End-to-End)
+
+A fully realized, interconnected worked example demonstrates how a feature flows through every document phase with consistent ID traceability:
+
+👉 **[docs/examples/instant-settlement-feature/](docs/examples/instant-settlement-feature/)**
+- **BRD (`01-BRD.md`):** Business scope, revenue model, and `KPI-SETTLE-01` (SLA <= 60s).
+- **FSD (`02-FSD.md`):** `FR-SETTLE-001` with Gherkin scenarios (happy, quota limit edge case, insufficient balance error), DMN fee table, and RBAC matrix.
+- **ADR (`03-ADR.md`):** `ADR-0042` documenting Transactional Outbox & Idempotency Key selection over 2PC in MADR 4.0.0 format.
+- **Test Plan (`04-Test-Plan.md`):** Tailored ISO 29119 test cases (`TC-SETTLE-01` to `04`) with Pact contract verification and fail-closed quality gate criteria.
+- **Daily Report (`05-Laporan-Harian.md`):** Event-derived daily standup linking PR #104, DORA metrics, and verified Definition of Done without subjective percentages.
+
+---
+
 ## Language Policy
 
 To maximize agent performance and team ergonomics:
