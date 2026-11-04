@@ -105,7 +105,16 @@ for skill_dir in "$REPO_ROOT"/skills/*/; do
     dest_dir="$TARGET_DIR/$skill_name"
 
     if [ -d "$dest_dir" ] && [ $FORCE -eq 0 ] && [ $DRY_RUN -eq 0 ]; then
-      echo "  ! Warning: $dest_dir already exists. Overwriting (use --force to suppress warning)."
+      if [ -t 0 ]; then
+        read -r -p "  ! Skill '$skill_name' already exists at '$dest_dir'. Overwrite? [y/N]: " confirm
+        if [[ ! "$confirm" =~ ^[yY]$ ]]; then
+          echo "    Skipping $skill_name."
+          continue
+        fi
+      else
+        echo "  ✗ Error: Skill directory '$dest_dir' already exists. Use --force to overwrite." >&2
+        exit 1
+      fi
     fi
 
     if [ $DRY_RUN -eq 1 ]; then

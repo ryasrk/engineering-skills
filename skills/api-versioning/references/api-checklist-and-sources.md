@@ -1,8 +1,8 @@
 ## 8. Checklist, koreksi standar, keterbatasan, dan daftar sumber API versioning
 
-> Template terkait: `../assets/06-Checklist-Zero-Downtime.md`, `../assets/06-Checklist-Release.md`, `../assets/06-Header-Lifecycle-Deprecation-Sunset.md`.
+> Template terkait: `../assets/06-Checklist-Zero-Downtime.md`, `../assets/06-Checklist-Zero-Downtime.md`, `../assets/06-Header-Lifecycle-Deprecation-Sunset.md`.
 
-Ketiga berkas tersebut adalah artefak mandiri; bagian ini hanya menyebut keberadaannya dan tidak menyalin isinya. Bagian kunci yang perlu dibuka pada masing-masing template sesuai rujukan catatan: exit gate dan runbook rollback untuk urutan Expand–Contract (`../assets/06-Checklist-Zero-Downtime.md`), checklist cutover beserta ambang rollback yang ditandatangani sebelum produksi (`../assets/06-Checklist-Release.md`), serta syntax dan urutan `Deprecation`–`Sunset`, `rel`, dan notice period (`../assets/06-Header-Lifecycle-Deprecation-Sunset.md`). `[Rekomendasi peneliti/tim]` — [Pact Docs, "Can I Deploy"](https://docs.pact.io/pact_broker/can_i_deploy), [RFC 9745](https://www.rfc-editor.org/rfc/rfc9745.html), [RFC 8594](https://www.rfc-editor.org/rfc/rfc8594.html), [Kubernetes Docs, "Deployments"](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
+Ketiga berkas tersebut adalah artefak mandiri; bagian ini hanya menyebut keberadaannya dan tidak menyalin isinya. Bagian kunci yang perlu dibuka pada masing-masing template sesuai rujukan catatan: exit gate dan runbook rollback untuk urutan Expand–Contract (`../assets/06-Checklist-Zero-Downtime.md`), checklist cutover beserta ambang rollback yang ditandatangani sebelum produksi (`../assets/06-Checklist-Zero-Downtime.md`), serta syntax dan urutan `Deprecation`–`Sunset`, `rel`, dan notice period (`../assets/06-Header-Lifecycle-Deprecation-Sunset.md`). `[Rekomendasi peneliti/tim]` — [Pact Docs, "Can I Deploy"](https://docs.pact.io/pact_broker/can_i_deploy), [RFC 9745](https://www.rfc-editor.org/rfc/rfc9745.html), [RFC 8594](https://www.rfc-editor.org/rfc/rfc8594.html), [Kubernetes Docs, "Deployments"](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
 
 ### 8.1 Konvensi penanda sitasi
 
@@ -112,7 +112,7 @@ Anti-pattern mengelompok menjadi lima kategori: kontrak, lifecycle, deployment, 
 
 ### 8.6 Checklist cutover dan kriteria rollback
 
-**Checklist cutover.** `[Rekomendasi peneliti/tim]` — lihat template lengkap `../assets/06-Checklist-Release.md`; dasar [Pact Docs, "Can I Deploy"](https://docs.pact.io/pact_broker/can_i_deploy), [AWS API Gateway canary](https://docs.aws.amazon.com/apigateway/latest/developerguide/canary-release.md), [Kubernetes Docs, "Deployments"](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [RFC 9745](https://www.rfc-editor.org/rfc/rfc9745.html), [RFC 8594](https://www.rfc-editor.org/rfc/rfc8594.html):
+**Checklist cutover.** `[Rekomendasi peneliti/tim]` — lihat template lengkap `../assets/06-Checklist-Zero-Downtime.md`; dasar [Pact Docs, "Can I Deploy"](https://docs.pact.io/pact_broker/can_i_deploy), [AWS API Gateway canary](https://docs.aws.amazon.com/apigateway/latest/developerguide/canary-release.md), [Kubernetes Docs, "Deployments"](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [RFC 9745](https://www.rfc-editor.org/rfc/rfc9745.html), [RFC 8594](https://www.rfc-editor.org/rfc/rfc8594.html):
 
 1. Kontrak V3, SDK V3, migration guide, dan navigation hub final.
 2. Compatibility gate + Pact matrix + `can-i-deploy` hijau.

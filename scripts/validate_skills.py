@@ -159,10 +159,19 @@ def validate_repo(repo_root: Path) -> bool:
                 text = asset.read_text(encoding="utf-8")
                 if "{{" not in text:
                     print(f"[{skill_name}] WARNING: Asset {asset.name} does not contain {{{{...}}}} placeholder", file=sys.stderr)
-                # Check for broken nested placeholder {{...{{...}}}}
-                if re.search(r'\{\{[^{}]*\{\{[^{}]*\}\}[^{}]*\}\}', text):
-                    print(f"[{skill_name}] FAIL: Asset {asset.name} contains invalid nested {{{{...{{...}}}}}} placeholder", file=sys.stderr)
-                    all_ok = False
+                # Check for broken nested placeholder (depth > 1)
+                for line_no, line in enumerate(text.splitlines(), start=1):
+                    tokens = [m.group() for m in re.finditer(r"(\{\{|\}\})", line)]
+                    depth = 0
+                    for tok in tokens:
+                        if tok == "{{":
+                            depth += 1
+                            if depth > 1:
+                                print(f"[{skill_name}] FAIL: Asset {asset.name}:{line_no} contains nested {{{{...}}}} placeholder: {line.strip()}", file=sys.stderr)
+                                all_ok = False
+                                break
+                        elif tok == "}}":
+                            depth = max(0, depth - 1)
 
         # Standard correction checks for api-versioning and engineering-docs
         if skill_name in ("api-versioning", "engineering-docs"):
@@ -174,6 +183,43 @@ def validate_repo(repo_root: Path) -> bool:
                 all_ok = False
 
         print(f"[{skill_name}] PASS")
+
+    # Validate worked examples traceability (docs/examples/)
+    examples_dir = repo_root / "docs" / "examples"
+    if examples_dir.is_dir():
+        for example_folder in examples_dir.iterdir():
+            if not example_folder.is_dir():
+                continue
+            brd_file = example_folder / "01-BRD.md"
+            fsd_file = example_folder / "02-FSD.md"
+            tp_file = example_folder / "04-Test-Plan.md"
+
+            if brd_file.is_file() and fsd_file.is_file() and tp_file.is_file():
+                brd_txt = brd_file.read_text(encoding="utf-8")
+                fsd_txt = fsd_file.read_text(encoding="utf-8")
+                tp_txt = tp_file.read_text(encoding="utf-8")
+
+                br_ids = set(re.findall(r'`(BR-[A-Z0-9-]+)`', brd_txt))
+                kpi_ids = set(re.findall(r'`(KPI-[A-Z0-9-]+)`', brd_txt))
+                fr_ids = set(re.findall(r'`(FR-[A-Z0-9-]+)`', fsd_txt))
+
+                # Check every BR has downstream FR
+                for br in br_ids:
+                    if br not in fsd_txt:
+                        print(f"[examples/{example_folder.name}] FAIL: Orphan requirement {br} not mapped in FSD", file=sys.stderr)
+                        all_ok = False
+
+                # Check every FR has downstream TC
+                for fr in fr_ids:
+                    if fr not in tp_txt:
+                        print(f"[examples/{example_folder.name}] FAIL: Orphan functional requirement {fr} not mapped in Test Plan", file=sys.stderr)
+                        all_ok = False
+
+                # Check every KPI has downstream TC or measurement in Test Plan
+                for kpi in kpi_ids:
+                    if kpi not in tp_txt:
+                        print(f"[examples/{example_folder.name}] FAIL: Business KPI {kpi} not traced in Test Plan", file=sys.stderr)
+                        all_ok = False
 
     # Global check: no machine-local paths in repository markdown or scripts
     local_machine_pattern = "/home/" + "ryasr"

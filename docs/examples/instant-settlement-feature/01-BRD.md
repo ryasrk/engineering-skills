@@ -2,7 +2,7 @@
 
 - Inisiatif: Instant Settlement Service
 - Versi: 1.0 (Baselined)
-- Pemilik Bisnis: Head of Merchant Payments
+- Pemilik Bisnis: Head of Merchant Payments (Rina W.)
 - Dokumen ID: `BRD-SETTLE-2026-01`
 
 ---
@@ -29,14 +29,17 @@ Fitur Pencairan Dana Instan memungkinkan mitra merchant mencairkan dana hasil pe
 |---|---|---|---|
 | `BR-SETTLE-001` | Merchant terverifikasi dapat mencairkan saldo kapan saja (24/7) ke rekening terdaftar. | High | Dana masuk rekening tujuan dalam ≤ 60 detik untuk 99.5% transaksi sukses. |
 | `BR-SETTLE-002` | Sistem memotong saldo ledger secara atomik untuk mencegah *double-spending* atau cerukan. | High | Saldo langsung dikunci saat request diterima dan didebet setelah ACK switching. |
-| `BR-SETTLE-003` | Skema biaya instan dipotong langsung dari nilai pencairan. | Medium | Biaya admin tercatat transparan di invoice dan mutasi rekening. |
+| `BR-SETTLE-003` | Skema biaya instan dipotong langsung dari nilai pencairan secara transparan. | Medium | Biaya admin tercatat transparan di invoice dan mutasi rekening sesuai aturan tier. |
 
 ## 5. Metrik Sukses (KPI)
-- `KPI-SETTLE-01`: Waktu pencairan end-to-end ≤ 60 detik (SLA 99.5%).
-- `KPI-SETTLE-02`: Volume pencairan instan harian mencapai Rp 5 Miliar dalam 3 bulan pertama.
+
+| ID | Deskripsi Metrik | Baseline | Target | Sumber Pengukuran | Tanggal Review |
+|---|---|---|---|---|---|
+| `KPI-SETTLE-01` | Waktu pencairan end-to-end (initiation hingga bank ACK) | T+1 (24 jam) | ≤ 60 detik (SLA 99.5%) | Telemetri Webhook Switching & Ledger Timer | 2026-12-01 |
+| `KPI-SETTLE-02` | Volume pencairan instan harian | Rp 0 (fitur baru) | Rp 5 Miliar / hari dalam 3 bulan | Data Warehouse Ledger Analytics | 2027-02-01 |
 
 ## 6. Stakeholder & RACI
-- **Accountable:** Head of Product (Rina W.)
+- **Accountable:** Head of Merchant Payments (Rina W.)
 - **Responsible:** Tech Lead (Budi S.), Product Manager (Dimas A.)
 - **Consulted:** Head of Compliance, Head of Risk & Fraud
 - **Informed:** Customer Support, Finance Operations

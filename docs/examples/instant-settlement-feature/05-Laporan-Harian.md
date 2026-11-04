@@ -7,11 +7,12 @@
 ---
 
 ## 1. TL;DR
-Implementasi outbox pattern dan idempotency filter untuk `FR-SETTLE-001` selesai dan telah di-merge via PR #104. Seluruh pengujian contract (Pact) dan performa (k6) lolos di staging; siap masuk canary rollout 10% besok pagi.
+Implementasi outbox pattern (`FR-SETTLE-001`), atomic balance locking (`FR-SETTLE-002`), dan kalkulasi biaya tier (`FR-SETTLE-003`) selesai dan telah di-merge via PR #104. Seluruh pengujian contract (`TC-SETTLE-08`), SLA timer (`TC-SETTLE-06`), dan performa (`TC-SETTLE-07`) lolos di staging; siap masuk canary rollout 10% besok pagi.
 
 ## 2. Deliverable Selesai (Sesuai Definition of Done)
-- [x] **PR #104:** Implementasi Idempotency Filter dan outbox message publisher untuk instant settlement (`FR-SETTLE-001`, `ADR-0042`).
-- [x] **PR #106:** Penambahan contract test Pact `TC-SETTLE-02` dan verifikasi provider switching (`can-i-deploy` status PASSED).
+- [x] **PR #104:** Implementasi Idempotency Filter dan outbox message publisher untuk instant settlement (`FR-SETTLE-001`, `FR-SETTLE-002`, `ADR-0042`).
+- [x] **PR #105:** Implementasi kalkulasi biaya berjenjang tier UMKM sesuai `RULE-FEE-01` (`FR-SETTLE-003`).
+- [x] **PR #106:** Penambahan contract test Pact `TC-SETTLE-08` dan verifikasi provider switching (`can-i-deploy` status PASSED).
 - [x] **Dokumentasi:** Update spesifikasi OpenAPI V1 di `docs/api/v1/openapi.yaml`.
 
 ## 3. Pekerjaan Berjalan (WIP)
@@ -21,12 +22,12 @@ Implementasi outbox pattern dan idempotency filter untuk `FR-SETTLE-001` selesai
 - **Tidak ada blocker aktif.** SLA switching bank terpantau stabil pada p95 = 450ms di sandbox partner.
 
 ## 5. Metrik Hari Ini (Event-Derived)
-- Pull Requests Merged: 2 (PR #104, PR #106)
+- Pull Requests Merged: 3 (PR #104, PR #105, PR #106)
 - CI Status: 100% Green (Required checks fail-closed lulus pada commit `31f686b`)
 - DORA Lead Time for Changes: 4.2 jam dari commit ke staging deploy
 
 ## 6. Keputusan yang Dibutuhkan
-- Approval dari Head of Risk untuk aktivasi rollout canary 10% traffic merchant tier-1 pada 2026-11-05 pukul 09:00 WIB.
+- Approval dari Head of Merchant Payments (Rina W.) untuk aktivasi rollout canary 10% traffic merchant tier-1 pada 2026-11-05 pukul 09:00 WIB.
 
 ## 7. Rencana Hari Berikutnya
 - Eksekusi canary deploy 10% menggunakan Nginx gateway split configuration.

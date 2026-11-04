@@ -1,8 +1,8 @@
 ## 2. FSD (Functional Specification / Functional Design)
 
-> Template terkait: ../assets/02-FSD.md, ../assets/02-RTM.md, ../assets/02-Checklist-Review.md.
+> Template terkait: ../assets/02-FSD.md, ../../engineering-docs/assets/rtm.md, ../assets/02-Checklist-Review.md.
 
-Ketiga berkas tersebut sudah berdiri sendiri; bagian ini tidak menyalin isinya, hanya menunjuk section kuncinya sesuai peta catatan riset. `../assets/02-FSD.md`: §6 (user story + AC Given/When/Then), §8 (business rules, decision table, authorization matrix), §12 (kontrak OAS 3.2.0), §15 (RTM dua arah), §16 (versioning/CR), §17 (sign-off). `../assets/02-RTM.md`: kolom `← Sumber BRD`, `→ AC`, `→ Test case ID`, `Cakupan balik`, serta baris kontrol orphan. `../assets/02-Checklist-Review.md`: butir periksa dari metadata dokumen sampai batas ruang lingkup. **[Praktik industri]** [arc42, *Template Overview*](https://arc42.org/overview/) menegaskan section template bersifat *tailorable*, bukan standar.
+Ketiga berkas tersebut sudah berdiri sendiri; bagian ini tidak menyalin isinya, hanya menunjuk section kuncinya sesuai peta catatan riset. `../assets/02-FSD.md`: §6 (user story + AC Given/When/Then), §8 (business rules, decision table, authorization matrix), §12 (kontrak OAS 3.2.0), §15 (RTM dua arah), §16 (versioning/CR), §17 (sign-off). `../../engineering-docs/assets/rtm.md`: kolom `← Sumber BRD`, `→ AC`, `→ Test case ID`, `Cakupan balik`, serta baris kontrol orphan. `../assets/02-Checklist-Review.md`: butir periksa dari metadata dokumen sampai batas ruang lingkup. **[Praktik industri]** [arc42, *Template Overview*](https://arc42.org/overview/) menegaskan section template bersifat *tailorable*, bukan standar.
 
 ### 2.1 Penanda sumber dan posisi FSD
 

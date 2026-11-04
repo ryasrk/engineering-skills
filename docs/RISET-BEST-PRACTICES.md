@@ -4,7 +4,7 @@
 >
 > Disusun: 2026-11-04 · Cakupan standar dan praktik: 2024–2026 · Bahasa: Indonesia
 >
-> Sumber utama: 6 catatan riset di `research_notes/Riset Best Practices Engineering/`. Template siap pakai: `templates/` (40 berkas).
+> Dokumen sintesis riset komprehensif. Template siap pakai tersimpan langsung di dalam masing-masing paket skill (`skills/<skill-name>/assets/`). Indeks lengkap: `TEMPLATE-INDEX.md`.
 
 ---
 
@@ -2166,7 +2166,7 @@ Checklist berikut adalah ringkasan operasional yang dapat dijadikan gate CI. Set
 - [ ] Header-based negotiation (jika ada) disertai `Vary`; path-based tidak mencampur cache antar versi. `[Standar resmi]` — [RFC 9111 §4.1](https://www.rfc-editor.org/rfc/rfc9111.html)
 - [ ] Checklist cutover dan kriteria rollback pada template Checklist release ditandatangani sebelum produksi. `[Rekomendasi peneliti/tim]`
 - [ ] README root berisi ringkasan + peta tautan, bukan salinan BRD/FSD/desain/test/laporan. `[Praktik industri]` — [GitHub Docs, "About the repository README file"](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes)
-- [ ] Satu canonical path per artefak; `templates/` berisi placeholder, `research_notes/` berstatus non-normatif; ADR lama immutable dengan `superseded by`. `[Praktik industri]` — [Write the Docs, "Docs as code"](https://www.writethedocs.org/guide/docs-as-code/), [MADR 4.0.0](https://adr.github.io/madr/)
+- [ ] Satu canonical path per artefak; template berplaceholder terisolasi, catatan kerja informal berstatus non-normatif; ADR lama immutable dengan `superseded by`. `[Praktik industri]` — [Write the Docs, "Docs as code"](https://www.writethedocs.org/guide/docs-as-code/), [MADR 4.0.0](https://adr.github.io/madr/)
 - [ ] CHANGELOG memiliki `Unreleased`, kategori, tanggal ISO, serta deprecation/removal/breaking. `[Praktik industri]` — [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/)
 - [ ] Root memiliki README, LICENSE, CONTRIBUTING, `.editorconfig`, `.gitignore`, Makefile/Justfile, dan CI config yang sesuai stack. `[Praktik industri]` — [GitHub Docs, README](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes), [EditorConfig](https://editorconfig.org/), [git-scm, "gitignore"](https://git-scm.com/docs/gitignore), [GitHub Actions documentation](https://docs.github.com/en/actions)
 - [ ] Config rahasia tidak di-commit; nama env var terdokumentasi; pola file generated dibagikan lewat `.gitignore`. `[Praktik industri]` — [The Twelve-Factor App, "Config"](https://12factor.net/config), [git-scm, "gitignore"](https://git-scm.com/docs/gitignore)
@@ -2190,7 +2190,7 @@ Anti-pattern mengelompok menjadi lima kategori: kontrak, lifecycle, deployment, 
 | Deployment | Deploy V3 dan langsung drop kolom lama | Aplikasi image lama selama rolling/canary masih menulis kolom itu | `[Praktik industri]` [Martin Fowler, "Parallel Change"](https://martinfowler.com/bliki/ParallelChange.html), [Kubernetes Docs](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) |
 | Deployment | Header/media-type versioning tanpa `Vary` | Cache dapat menyajikan representasi versi salah | `[Standar resmi]` [RFC 9111 §4.1](https://www.rfc-editor.org/rfc/rfc9111.html); `[Praktik industri]` [Microsoft Learn](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design) |
 | Dokumentasi | Satu `openapi.yaml` "latest" yang ditimpa untuk V1/V2/V3 | Kontrak lama hilang, SDK lama tidak dapat direproduksi | `[Standar resmi]` [OAS 3.2.0 §4.1–4.2](https://spec.openapis.org/oas/v3.2.0.html); `[Praktik industri]` [Zalando rules 101/234](https://opensource.zalando.com/restful-api-guidelines/) |
-| Dokumentasi | Menyalin isi BRD/FSD/desain/test/laporan ke README, ADR, dan research_notes | Banyak source-of-truth yang drift; melanggar batas scope peneliti lain | `[Praktik industri]` [Write the Docs, "Docs as code"](https://www.writethedocs.org/guide/docs-as-code/), [GitHub Docs, README](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes) |
+| Dokumentasi | Menyalin isi BRD/FSD/desain/test/laporan ke README, ADR, dan catatan kerja | Banyak source-of-truth yang drift; melanggar batas scope peneliti lain | `[Praktik industri]` [Write the Docs, "Docs as code"](https://www.writethedocs.org/guide/docs-as-code/), [GitHub Docs, README](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes) |
 | Dokumentasi | Git log mentah dijadikan CHANGELOG; ADR lama ditimpa; release tanpa tag | Konsumen tidak melihat dampak; keputusan kehilangan jejak; rilis tidak reproducible | `[Praktik industri]` [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/), [MADR 4.0.0](https://adr.github.io/madr/), [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) |
 | Dokumentasi | Monorepo tanpa project graph/cache/module boundaries | CI menjalankan semua tes; kode internal menjadi dependensi lintas tim | `[Praktik industri]` [Nx, "What is a Monorepo?"](https://nx.dev/docs/concepts/decisions/why-monorepos), [Turborepo](https://turbo.build/repo/docs/core-concepts/monorepos) |
 | Konfigurasi | Secret/env production masuk `config/`, atau config per-deploy di-hardcode | Kredensial bocor dan perubahan environment memaksa perubahan kode | `[Praktik industri]` [The Twelve-Factor App, "Config"](https://12factor.net/config), [git-scm, "gitignore"](https://git-scm.com/docs/gitignore) |
@@ -2354,7 +2354,7 @@ Seluruh URL berikut dikutip apa adanya dari catatan sumber; tidak ada URL tambah
 
 **Berkas terkait**
 
-- Laporan ini: `reports/Riset Best Practices Engineering.md`
-- Catatan riset: `research_notes/Riset Best Practices Engineering/01-brd.md` … `06-skema-dan-versioning-api.md`
-- Template: `templates/` — lihat `templates/README.md`
+- Laporan ini: `docs/RISET-BEST-PRACTICES.md`
+- Indeks Template: `docs/TEMPLATE-INDEX.md`
+- Paket Skills & Templates: `skills/*/assets/`
 

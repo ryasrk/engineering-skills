@@ -1,0 +1,614 @@
+{
+  "version": "1.0.0",
+  "trigger_evals": [
+    {
+      "id": "docs-01",
+      "query": "Kita mau mulai proyek baru dari awal, tolong pandu urutan dokumen engineering apa saja yang harus disiapkan dari BRD sampai testing.",
+      "target_skill": "engineering-docs",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "docs-02",
+      "query": "Tolong buatkan audit tata kelola dokumentasi untuk tim kami: bagaimana RTM menghubungkan requirement bisnis ke test case dan rilis.",
+      "target_skill": "engineering-docs",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "docs-03",
+      "query": "Bagaimana cara menyusun pohon folder dokumentasi docs/ yang rapi agar artefak tidak tumpang tindih?",
+      "target_skill": "engineering-docs",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "docs-04",
+      "query": "Dokumen apa yang harus dibuat setelah BRD disetujui sebelum developer mulai ngoding?",
+      "target_skill": "engineering-docs",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "docs-05",
+      "query": "Bisa berikan master RTM template untuk melacak seluruh siklus dari bisnis sampai delivery?",
+      "target_skill": "engineering-docs",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "docs-06",
+      "query": "Tolong bantu tulis dokumen BRD untuk fitur top up e-wallet.",
+      "target_skill": "engineering-docs",
+      "should_trigger": false,
+      "category": "arbitration"
+    },
+    {
+      "id": "docs-07",
+      "query": "Buatkan script python untuk scrape data kurs BI.",
+      "target_skill": "engineering-docs",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "docs-08",
+      "query": "Bagaimana cara install docker di ubuntu 24.04?",
+      "target_skill": "engineering-docs",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "docs-09",
+      "query": "Saya mau bikin test case untuk login page, pakai format apa ya?",
+      "target_skill": "engineering-docs",
+      "should_trigger": false,
+      "category": "arbitration"
+    },
+    {
+      "id": "docs-10",
+      "query": "Tuliskan memo pengumuman libur lebaran untuk karyawan kantor.",
+      "target_skill": "engineering-docs",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "brd-01",
+      "query": "Tolong buatkan Business Requirements Document (BRD) untuk inisiatif loyalitas pelanggan tier platinum.",
+      "target_skill": "brd-writing",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "brd-02",
+      "query": "Saya ada draft BRD ini, tolong review apakah sudah memenuhi kriteria SMART dan tidak ada solusi teknis terselubung.",
+      "target_skill": "brd-writing",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "brd-03",
+      "query": "Bagaimana merumuskan KPI bisnis dan RACI matrix untuk persetujuan sponsor di BRD?",
+      "target_skill": "brd-writing",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "brd-04",
+      "query": "Bisa bantu tuliskan scope in dan scope out untuk sistem manajemen inventaris gudang?",
+      "target_skill": "brd-writing",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "brd-05",
+      "query": "Apakah format bab BRD dan SMART/INVEST itu diwajibkan oleh ISO 29148?",
+      "target_skill": "brd-writing",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "brd-06",
+      "query": "Tolong buatkan use case diagram dan tabel relasi database untuk fitur checkout.",
+      "target_skill": "brd-writing",
+      "should_trigger": false,
+      "category": "arbitration"
+    },
+    {
+      "id": "brd-07",
+      "query": "Tolong tulis skenario Gherkin Given When Then untuk fitur reset password.",
+      "target_skill": "brd-writing",
+      "should_trigger": false,
+      "category": "arbitration"
+    },
+    {
+      "id": "brd-08",
+      "query": "Buatkan laporan keuangan laba rugi kuartal 3 dalam format excel.",
+      "target_skill": "brd-writing",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "brd-09",
+      "query": "Tolong buatkan resume cv untuk lamaran kerja business analyst.",
+      "target_skill": "brd-writing",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "brd-10",
+      "query": "Jelaskan sejarah berdirinya International Institute of Business Analysis (IIBA).",
+      "target_skill": "brd-writing",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "fsd-01",
+      "query": "Buatkan dokumen Functional Specification Document (FSD) untuk modul pendaftaran mitra pengemudi.",
+      "target_skill": "fsd-writing",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "fsd-02",
+      "query": "Tolong tuliskan acceptance criteria format Gherkin Given-When-Then mencakup happy path, edge case, dan error path untuk transfer dana.",
+      "target_skill": "fsd-writing",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "fsd-03",
+      "query": "Bagaimana menyusun decision table DMN untuk penentuan diskon ongkir otomatis?",
+      "target_skill": "fsd-writing",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "fsd-04",
+      "query": "Bantu susun role-based authorization matrix untuk modul persetujuan pengadaan barang.",
+      "target_skill": "fsd-writing",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "fsd-05",
+      "query": "Tolong review dokumen SRS ini apakah use case dan validasi field sudah lengkap dan dapat diuji.",
+      "target_skill": "fsd-writing",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "fsd-06",
+      "query": "Buatkan diagram C4 Container dan sequence diagram arsitektur microservices.",
+      "target_skill": "fsd-writing",
+      "should_trigger": false,
+      "category": "arbitration"
+    },
+    {
+      "id": "fsd-07",
+      "query": "Tolong tuliskan test plan ISO 29119 untuk pengujian performa load test.",
+      "target_skill": "fsd-writing",
+      "should_trigger": false,
+      "category": "arbitration"
+    },
+    {
+      "id": "fsd-08",
+      "query": "Tolong tuliskan kode controller Node.js Express untuk CRUD user.",
+      "target_skill": "fsd-writing",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "fsd-09",
+      "query": "Bagaimana cara instalasi database PostgreSQL di kubernetes?",
+      "target_skill": "fsd-writing",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "fsd-10",
+      "query": "Apa bedanya functional programming dengan object oriented programming?",
+      "target_skill": "fsd-writing",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "design-01",
+      "query": "Tolong bantu susun Design Doc RFC untuk migrasi sistem monolitik ke arsitektur event-driven.",
+      "target_skill": "design-docs",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "design-02",
+      "query": "Buatkan Architecture Decision Record (ADR) format MADR 4.0.0 untuk pemilihan database Apache Cassandra.",
+      "target_skill": "design-docs",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "design-03",
+      "query": "Bagaimana menyusun spesifikasi UI/UX component handoff lengkap dengan design tokens dan matriks state?",
+      "target_skill": "design-docs",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "design-04",
+      "query": "Tolong buatkan Definition of Done (DoD) aksesibilitas WCAG 2.2 AA untuk form registrasi web.",
+      "target_skill": "design-docs",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "design-05",
+      "query": "Lakukan review arsitektur dengan checklist STRIDE threat modeling dan Well-Architected framework.",
+      "target_skill": "design-docs",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "design-06",
+      "query": "Tolong buatkan strategi versioning API zero downtime V1 ke V2 di Nginx gateway.",
+      "target_skill": "design-docs",
+      "should_trigger": false,
+      "category": "arbitration"
+    },
+    {
+      "id": "design-07",
+      "query": "Bagaimana menata branch GitFlow vs Trunk-based dan CODEOWNERS?",
+      "target_skill": "design-docs",
+      "should_trigger": false,
+      "category": "arbitration"
+    },
+    {
+      "id": "design-08",
+      "query": "Tolong buatkan file Figma mockup halaman dashboard analytics.",
+      "target_skill": "design-docs",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "design-09",
+      "query": "Bisa perbaiki bug CSS flexbox yang tidak rata tengah di Safari?",
+      "target_skill": "design-docs",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "design-10",
+      "query": "Siapa penemu konsep C4 model untuk visualisasi arsitektur?",
+      "target_skill": "design-docs",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "qa-01",
+      "query": "Tolong buatkan dokumen Test Plan tailored ISO/IEC/IEEE 29119 untuk rilis payment gateway.",
+      "target_skill": "qa-docs",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "qa-02",
+      "query": "Bagaimana konfigurasi fail-closed quality gate di GitHub Actions agar check yang di-skip tidak dianggap lolos?",
+      "target_skill": "qa-docs",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "qa-03",
+      "query": "Bantu tentukan exit criteria pengujian untuk integrasi Pact consumer-driven contract.",
+      "target_skill": "qa-docs",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "qa-04",
+      "query": "Bagaimana menyusun metrik pengujian yang bermakna seperti DDP dan DORA daripada mengejar 100% line coverage?",
+      "target_skill": "qa-docs",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "qa-05",
+      "query": "Bisa berikan template bug report dan incident report standar ISTQB CTFL v4.0?",
+      "target_skill": "qa-docs",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "qa-06",
+      "query": "Tolong tuliskan laporan standup harian progress pengerjaan sprint hari ini.",
+      "target_skill": "qa-docs",
+      "should_trigger": false,
+      "category": "arbitration"
+    },
+    {
+      "id": "qa-07",
+      "query": "Tolong buatkan script unit test jest untuk function calculateDiscount.",
+      "target_skill": "qa-docs",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "qa-08",
+      "query": "Kenapa test playwright saya timeout saat running di headless mode?",
+      "target_skill": "qa-docs",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "qa-09",
+      "query": "Bagaimana cara setup k6 di local mesin Mac M1?",
+      "target_skill": "qa-docs",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "qa-10",
+      "query": "Apa arti istilah shift-left testing dalam software engineering?",
+      "target_skill": "qa-docs",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "daily-01",
+      "query": "Tolong buatkan laporan harian engineering proyek untuk dikirim ke klien sore ini.",
+      "target_skill": "daily-reporting",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "daily-02",
+      "query": "Bantu susun format standup asinkron tim remote agar tidak ada status theater atau persentase subyektif.",
+      "target_skill": "daily-reporting",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "daily-03",
+      "query": "Bagaimana matriks eskalasi blocker yang benar dengan SLA dan penugasan owner tunggal?",
+      "target_skill": "daily-reporting",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "daily-04",
+      "query": "Format apa yang tepat untuk laporan status proyek mingguan ke Engineering Manager?",
+      "target_skill": "daily-reporting",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "daily-05",
+      "query": "Tolong sesuaikan update harian ini agar aman dari kebocoran data sensitif GDPR.",
+      "target_skill": "daily-reporting",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "daily-06",
+      "query": "Tolong buatkan release notes dan changelog untuk rilis v1.2.0.",
+      "target_skill": "daily-reporting",
+      "should_trigger": false,
+      "category": "arbitration"
+    },
+    {
+      "id": "daily-07",
+      "query": "Tuliskan surat izin tidak masuk kerja karena sakit untuk HRD.",
+      "target_skill": "daily-reporting",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "daily-08",
+      "query": "Bisa jadwalkan meeting di google calendar besok jam 10 pagi?",
+      "target_skill": "daily-reporting",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "daily-09",
+      "query": "Bagaimana cara setup bot reminder standup harian di Slack?",
+      "target_skill": "daily-reporting",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "daily-10",
+      "query": "Berapa lama durasi daily standup menurut Scrum Guide 2020?",
+      "target_skill": "daily-reporting",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "proj-01",
+      "query": "Bagaimana struktur direktori repository monorepo yang ideal untuk microservices dan frontend?",
+      "target_skill": "project-structure",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "proj-02",
+      "query": "Tolong buatkan file CODEOWNERS untuk membagi kepemilikan kode backend, infra, dan security.",
+      "target_skill": "project-structure",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "proj-03",
+      "query": "Bantu susun CHANGELOG.md sesuai standar Keep a Changelog 1.1.0 dan Semantic Versioning 2.0.0.",
+      "target_skill": "project-structure",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "proj-04",
+      "query": "Kapan sebaiknya tim memilih monorepo dibanding polyrepo, dan apa trade-off caching dan tooling-nya?",
+      "target_skill": "project-structure",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "proj-05",
+      "query": "Tolong buatkan checklist rilis pra-cutover dan kriteria rollback otomatis.",
+      "target_skill": "project-structure",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "proj-06",
+      "query": "Tolong jelaskan cara migrasi skema database zero downtime dengan expand-contract pattern.",
+      "target_skill": "project-structure",
+      "should_trigger": false,
+      "category": "arbitration"
+    },
+    {
+      "id": "proj-07",
+      "query": "Bagaimana cara revert commit git yang sudah di-push ke remote?",
+      "target_skill": "project-structure",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "proj-08",
+      "query": "Bisa jelaskan perintah git rebase interactive secara mendetail?",
+      "target_skill": "project-structure",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "proj-09",
+      "query": "Tolong buatkan Dockerfile multi-stage build untuk aplikasi Go.",
+      "target_skill": "project-structure",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "proj-10",
+      "query": "Apa perbedaan lisensi MIT dengan Apache 2.0?",
+      "target_skill": "project-structure",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "api-01",
+      "query": "Bagaimana skema API versioning zero downtime dengan versi V1, V2, V3 yang di-embed pada URI path?",
+      "target_skill": "api-versioning",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "api-02",
+      "query": "Tolong buatkan runbook migrasi database Expand-Contract 5 fase tanpa downtime.",
+      "target_skill": "api-versioning",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "api-03",
+      "query": "Bagaimana penggunaan header RFC 9745 Deprecation dan RFC 8594 Sunset yang benar pada API?",
+      "target_skill": "api-versioning",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "api-04",
+      "query": "Buatkan konfigurasi NGINX reverse proxy untuk routing /api/v1, /api/v2, dan canary v3 dengan split_clients.",
+      "target_skill": "api-versioning",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "api-05",
+      "query": "Kapan perubahan field pada API dianggap additive dan kapan dianggap breaking change yang mewajibkan major baru?",
+      "target_skill": "api-versioning",
+      "should_trigger": true,
+      "category": "positive"
+    },
+    {
+      "id": "api-06",
+      "query": "Tolong buatkan test plan untuk load testing sistem perbankan.",
+      "target_skill": "api-versioning",
+      "should_trigger": false,
+      "category": "arbitration"
+    },
+    {
+      "id": "api-07",
+      "query": "Tolong buatkan spesifikasi fungsional FSD untuk fitur transfer dana.",
+      "target_skill": "api-versioning",
+      "should_trigger": false,
+      "category": "arbitration"
+    },
+    {
+      "id": "api-08",
+      "query": "Bagaimana cara consume REST API di React menggunakan TanStack Query?",
+      "target_skill": "api-versioning",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "api-09",
+      "query": "Bisa jelaskan konsep HTTP status code 418 I am a teapot?",
+      "target_skill": "api-versioning",
+      "should_trigger": false,
+      "category": "negative"
+    },
+    {
+      "id": "api-10",
+      "query": "Tuliskan curl command untuk upload file multipart form-data.",
+      "target_skill": "api-versioning",
+      "should_trigger": false,
+      "category": "negative"
+    }
+  ],
+  "output_evals": [
+    {
+      "id": "eval-brd-output",
+      "skill": "brd-writing",
+      "description": "Verifies that BRD outputs strictly contain atomic BR IDs, in/out scope, measurable KPIs with baselines/targets, and no technical solution elements.",
+      "rubric": [
+        "Includes stable requirement identifiers matching BR-...",
+        "Features explicit Scope In and Scope Out sections",
+        "Includes KPI table with baseline, target, measurement source, and review date",
+        "Contains RACI matrix with an explicit Accountable owner",
+        "Does not contain database schema or class implementation details"
+      ]
+    },
+    {
+      "id": "eval-fsd-output",
+      "skill": "fsd-writing",
+      "description": "Verifies that FSD outputs contain Given/When/Then criteria for happy/edge/error paths, DMN decision tables, and RBAC matrix.",
+      "rubric": [
+        "Includes user stories with Gherkin Given/When/Then scenarios",
+        "Covers at least three scenarios: happy path, boundary edge case, error path",
+        "Features a decision table with a default fallback row",
+        "Includes an authorization matrix",
+        "Traces back to upstream business requirement IDs"
+      ]
+    },
+    {
+      "id": "eval-adr-output",
+      "skill": "design-docs",
+      "description": "Verifies that ADR outputs strictly conform to MADR 4.0.0 with un-nested status placeholders.",
+      "rubric": [
+        "Conforms to MADR 4.0.0 structure (Context, Decision Drivers, Considered Options, Outcome, Consequences)",
+        "Status line is clean and un-nested",
+        "Includes explicit pros and cons for considered options",
+        "Records confirmation and compliance verification method"
+      ]
+    },
+    {
+      "id": "eval-api-versioning-output",
+      "skill": "api-versioning",
+      "description": "Verifies that API versioning specifications enforce URI path embedding, Expand-Contract phases, and correct RFC lifecycle headers.",
+      "rubric": [
+        "Specifies URI path embedding /api/vN for major versioning",
+        "Delineates Expand-Contract into expand, backfill, dual-write/read, switch, contract phases",
+        "Identifies RFC 9745 as Deprecation and RFC 8594 as Sunset",
+        "Enforces that Sunset timestamp must not precede Deprecation",
+        "Includes cutover checklist and quantifiable rollback triggers"
+      ]
+    }
+  ]
+}

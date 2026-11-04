@@ -31,6 +31,10 @@ For a full program, work in this order: BRD → FSD → design/ADR → test plan
 4. **Traceability is bidirectional.** A BRD row must reach a test case, and every test case must resolve back to a requirement or explicit risk decision. Orphan rows are defects, not optional rows.
 5. **A template is not evidence of completion.** Shipped artefacts need dated status, owner, review decision, and — for changes claimed as done — command-backed evidence.
 
+## Master Traceability Template
+
+Use `assets/rtm.md` for end-to-end bidirectional requirements tracing (BRD → FSD → AC → ADR → API → Test Case → Release Evidence).
+
 ## Deep reference
 
 - Read `references/standard-corrections.md` when citing ISO/IEC/IEEE, RFC, W3C, OWASP, or when a reviewer disputes a standard claim.

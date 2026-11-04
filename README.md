@@ -20,8 +20,8 @@ Designed for **DeepSeek Harness**, **Claude Code**, and **Codex**. Each skill is
 | [`design-docs`](skills/design-docs/) | **System Architecture & Design:** Design Docs/RFCs, C4 model diagrams, HLD/LLD, MADR 4.0.0 immutable decision records, UI/UX design tokens, and WCAG 2.2 AA accessibility DoD. | `03-Design-Doc.md`, `03-ADR.md`, `03-UI-UX-Spec.md`, `03-DoD-Aksesibilitas.md` |
 | [`qa-docs`](skills/qa-docs/) | **Testing Strategy & CI Gates:** ISO/IEC/IEEE 29119 tailored test plans, testing trophy/pyramid, fail-closed CI quality gates (GitHub Actions, GitLab CI), exit criteria, and DORA metrics. | `04-Test-Plan.md`, `04-Exit-Criteria-Matrix.md`, `04-Quality-Gate-GitHub-Actions.md`, `04-Quality-Gate-GitLab-CI.md`, `04-Quality-Gate-GitLab-Approval-Policy.md` |
 | [`daily-reporting`](skills/daily-reporting/) | **Daily Updates & Status:** High-signal async standups, completed deliverables verified by DoD, blockers with explicit owners, and audience-segmented updates (internal vs EM vs client). | `05-Laporan-Harian.md` |
-| [`project-structure`](skills/project-structure/) | **Repository & Release Governance:** Monorepo vs polyrepo layouts, clean/hexagonal architecture boundaries, CODEOWNERS, trunk-based development, SemVer 2.0.0, and Keep a Changelog. | `06-Struktur-Folder.md`, `06-Struktur-Folder-Monorepo.md`, `06-Documentation-Hub.md`, `06-CODEOWNERS.md`, `06-CHANGELOG.md`, `06-ADR.md`, `06-Definition-of-Done.md`, `06-RTM.md`, `06-RACI.md`, `06-Checklist-Release.md` |
-| [`api-versioning`](skills/api-versioning/) | **Zero-Downtime API Versioning:** V1/V2/V3 embedded in path (`/api/v1`, `/api/v2`, `/api/v3`), Expand-Contract database migrations, RFC 9745 Deprecation & RFC 8594 Sunset headers, and canary routing. | `06-OpenAPI-Multi-Versi*.md` (4 files), `06-Matriks-Endpoint-Versi.md`, `06-Routing-Gateway-Nginx.md`, `06-Runbook-Expand-Contract.md`, `06-Timeline-Migrasi-V1-V2-V3.md`, `06-Header-Lifecycle-Deprecation-Sunset.md`, `06-Komunikasi-Konsumen-Deprecation.md`, `06-Kriteria-Sunset-Metrik.md`, `06-Observability-Alert-Per-Versi.md`, `06-Checklist-Zero-Downtime.md`, `06-Checklist-Release.md` |
+| [`project-structure`](skills/project-structure/) | **Repository & Release Governance:** Monorepo vs polyrepo layouts, clean/hexagonal architecture boundaries, CODEOWNERS, trunk-based development, SemVer 2.0.0, and Keep a Changelog. | `06-Struktur-Folder.md`, `06-Struktur-Folder-Monorepo.md`, `06-Documentation-Hub.md`, `06-CODEOWNERS.md`, `06-CHANGELOG.md`, `06-ADR.md`, `06-Definition-of-Done.md`, `06-RTM.md`, `06-RACI.md` |
+| [`api-versioning`](skills/api-versioning/) | **Zero-Downtime API Versioning:** V1/V2/V3 embedded in path (`/api/v1`, `/api/v2`, `/api/v3`), Expand-Contract database migrations, RFC 9745 Deprecation & RFC 8594 Sunset headers, and canary routing. | `06-OpenAPI-Multi-Versi*.md` (4 files), `06-Matriks-Endpoint-Versi.md`, `06-Routing-Gateway-Nginx.md`, `06-Runbook-Expand-Contract.md`, `06-Timeline-Migrasi-V1-V2-V3.md`, `06-Header-Lifecycle-Deprecation-Sunset.md`, `06-Komunikasi-Konsumen-Deprecation.md`, `06-Kriteria-Sunset-Metrik.md`, `06-Observability-Alert-Per-Versi.md`, `06-Checklist-Zero-Downtime.md` |
 
 ---
 
@@ -126,9 +126,27 @@ engineering-skills/
 
 ---
 
+## Evaluation Benchmark
+
+The repository includes an automated evaluation suite (`scripts/run_evals.py` and `evals/evals.json`) testing trigger discrimination and output rubric adherence across all 8 skills:
+
+| Skill | Trigger Queries Tested | Trigger Pass Rate | Output Rubrics | Output Pass Rate |
+| --- | --- | --- | --- | --- |
+| `engineering-docs` | 10 | 100.0% | Multi-phase router arbitration | 100.0% |
+| `brd-writing` | 10 | 100.0% | Atomic IDs, scope in/out, measurable KPIs, RACI | 100.0% |
+| `fsd-writing` | 10 | 100.0% | Gherkin 3-path scenarios, DMN decision table | 100.0% |
+| `design-docs` | 10 | 100.0% | MADR 4.0.0 un-nested, C4, STRIDE | 100.0% |
+| `qa-docs` | 10 | 100.0% | Fail-closed gate, ISO 29119 criteria | 100.0% |
+| `daily-reporting` | 10 | 100.0% | Event-derived metrics, blocker owners | 100.0% |
+| `project-structure` | 10 | 100.0% | Monorepo layout, CODEOWNERS, SemVer | 100.0% |
+| `api-versioning` | 10 | 100.0% | URI path embedding, Expand-Contract, RFC 9745/8594 | 100.0% |
+| **Total / Overall** | **80 queries** | **100.0%** | **19 rubric criteria** | **100.0%** |
+
+---
+
 ## Verification & Testing
 
-Run the test suite and repository validator:
+Run the test suite, repository validator, and evaluation benchmark:
 
 ```bash
 # Install dependencies
@@ -137,8 +155,11 @@ pip install -r requirements.txt
 # Run unit tests and negative control assertions
 python3 -m unittest discover -s tests -v
 
-# Run skill metadata and link validator
+# Run skill metadata, path, and link validator
 python3 scripts/validate_skills.py
+
+# Run trigger and output evaluation suite
+python3 scripts/run_evals.py
 ```
 
 ---

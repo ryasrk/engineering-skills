@@ -1,6 +1,6 @@
 ## 6. Lainnya — Skema folder dan skema project
 
-> Template terkait: ../assets/06-Struktur-Folder.md, ../assets/06-Struktur-Folder-Monorepo.md, ../assets/06-Documentation-Hub.md, ../assets/06-CODEOWNERS.md, ../assets/06-CHANGELOG.md, ../assets/06-ADR.md, ../assets/06-Definition-of-Done.md, ../assets/06-RTM.md, ../assets/06-RACI.md, ../assets/06-Checklist-Release.md
+> Template terkait: ../assets/06-Struktur-Folder.md, ../assets/06-Struktur-Folder-Monorepo.md, ../assets/06-Documentation-Hub.md, ../assets/06-CODEOWNERS.md, ../assets/06-CHANGELOG.md, ../../design-docs/assets/03-ADR.md, ../assets/06-Definition-of-Done.md, ../../engineering-docs/assets/rtm.md, ../assets/06-RACI.md, ../assets/06-Checklist-Release.md
 
 ### 6.1 Ringkasan best practices
 
@@ -199,9 +199,9 @@ Seluruh template pada catatan sumber adalah berkas Markdown lengkap berplacehold
 | `../assets/06-Documentation-Hub.md` | "Mulai cepat", "Peta artefak per fase", "Keputusan dan tata kelola", "Versioning dokumen", "Review dokumentasi", "Sumber normatif" | `[Standar resmi]` [GitHub Docs, About READMEs](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes); `[Praktik industri]` [Write the Docs, "Docs as code"](https://www.writethedocs.org/guide/docs-as-code/) |
 | `../assets/06-CODEOWNERS.md` | Urutan lokasi, pola terakhir menang, path case-sensitive, area kepemilikan | `[Standar resmi]` [GitHub Docs, "About code owners"](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners) |
 | `../assets/06-CHANGELOG.md` | `Unreleased`, kategori Added/Changed/Deprecated/Removed/Fixed/Security, tanggal ISO, tautan compare | `[Praktik industri]` [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/), [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) |
-| `../assets/06-ADR.md` | "Context and Problem Statement", "Decision Drivers", "Considered Options", "Decision Outcome", "Consequences", "Confirmation", "Pros and Cons of the Options", "More Information" | `[Praktik industri]` [MADR 4.0.0](https://adr.github.io/madr/) |
+| `../../design-docs/assets/03-ADR.md` | "Context and Problem Statement", "Decision Drivers", "Considered Options", "Decision Outcome", "Consequences", "Confirmation", "Pros and Cons of the Options", "More Information" | `[Praktik industri]` [MADR 4.0.0](https://adr.github.io/madr/) |
 | `../assets/06-Definition-of-Done.md` | Tabel `# / Kriteria / Bukti / Wajib untuk`; baris tanda tangan approver | `[Rekomendasi peneliti/tim]` — `[Standar resmi]` [GitHub Docs, "About protected branches"](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches), [GitHub Docs, "About code owners"](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners), [Pact can-i-deploy](https://docs.pact.io/pact_broker/can_i_deploy) |
-| `../assets/06-RTM.md` | Tabel `ID Requirement → Sumber kanonik → Keputusan/ADR → Modul → Verifikasi → Status → Pemilik`; bagian "Coverage" | `[Rekomendasi peneliti/tim]` — melacak lokasi dan status, bukan menyalin isi requirements |
+| `../../engineering-docs/assets/rtm.md` | Tabel `ID Requirement → Sumber kanonik → Keputusan/ADR → Modul → Verifikasi → Status → Pemilik`; bagian "Coverage" | `[Rekomendasi peneliti/tim]` — melacak lokasi dan status, bukan menyalin isi requirements |
 | `../assets/06-RACI.md` | Legenda R/A/C/I; aturan tepat satu A per baris; kolom peran | `[Rekomendasi peneliti/tim]` |
 | `../assets/06-Checklist-Release.md` | "Pra-rilis", "Cutover", "Pasca-rilis", "Rollback otomatis bila"; tanda tangan release manager | `[Rekomendasi peneliti/tim]` |
 

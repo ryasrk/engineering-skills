@@ -18,8 +18,8 @@ Establish clean repository directory layouts, modular boundary separation, and a
    - `assets/06-Definition-of-Done.md` — multi-stage DoD checklist.
    - `assets/06-RACI.md` — governance and responsibility matrix.
    - `assets/06-Checklist-Release.md` — pre-release, cutover, and rollback readiness checklist.
-   - `assets/06-RTM.md` — cross-module traceability matrix.
-   - `assets/06-ADR.md` — lightweight MADR template for structural decisions.
+   - For architectural decision records, use the canonical MADR 4.0.0 template in `design-docs`.
+   - For cross-phase requirements tracing, use the canonical Master RTM in `engineering-docs`.
 
 ## Decisions that materially change the result
 

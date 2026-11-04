@@ -87,6 +87,22 @@ description: "Mismatch."
         bad_asset.write_text("Status: {{proposed|superseded by {{NNNN}}}}", encoding="utf-8")
         self.assertFalse(validate_repo(self.mock_root))
 
+    def test_multiple_nested_placeholders_fails(self):
+        """Must catch {{... {{A}} ... {{B}} ...}} with multiple inner placeholders."""
+        skill_dir = self._create_minimal_skill()
+        bad_asset = skill_dir / "assets" / "multi_broken.md"
+        bad_asset.write_text("Pernyataan: {{Target {{UNIT}} menghasilkan {{NILAI}} dalam {{TANGGAL}}.}}", encoding="utf-8")
+        self.assertFalse(validate_repo(self.mock_root))
+
+    def test_orphan_example_requirement_fails(self):
+        """Worked example with untraced BR must be rejected."""
+        ex_dir = self.mock_root / "docs" / "examples" / "test-feature"
+        ex_dir.mkdir(parents=True)
+        (ex_dir / "01-BRD.md").write_text("Requirement: `BR-TEST-001`\nKPI: `KPI-TEST-01`", encoding="utf-8")
+        (ex_dir / "02-FSD.md").write_text("Functional: `FR-TEST-001`", encoding="utf-8")
+        (ex_dir / "04-Test-Plan.md").write_text("Test Case: `TC-TEST-01`", encoding="utf-8")
+        self.assertFalse(validate_repo(self.mock_root))
+
     def test_description_too_long_fails(self):
         long_desc = "A" * 501
         self._create_minimal_skill(description=long_desc)

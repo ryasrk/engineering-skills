@@ -51,7 +51,7 @@
 | `GOAL-001` | `{{Tujuan 1}}` | `{{Nilai bagi organisasi/pelanggan}}` | `{{OKR/strategi-ID}}` | `KPI-{{NN}}` |
 | `GOAL-002` | `{{Tujuan 2}}` | `{{Nilai}}` | `{{OKR/strategi-ID}}` | `KPI-{{NN}}` |
 
-**Pernyataan nilai:** `{{Dengan tercapainya GOAL-001..GOAL-N, {{UNIT}} memperoleh {{MANFAAT}} sebesar {{NILAI}} dalam {{HORIZON}}, dengan asumsi {{A-ID}} dan batas {{C-ID}}.}}`
+**Pernyataan nilai:** Dengan tercapainya GOAL-001..GOAL-N, {{UNIT}} memperoleh {{MANFAAT}} sebesar {{NILAI}} dalam {{HORIZON}}, dengan asumsi {{A-ID}} dan batas {{C-ID}}.
 
 ---
 

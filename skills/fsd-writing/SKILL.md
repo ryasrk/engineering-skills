@@ -11,7 +11,7 @@ Bridge business requirements into verifiable, testable system behaviors and cont
 
 1. Read `references/fsd-guide.md` for standards context, acceptance criteria conventions, and condensed best practices.
 2. Copy `assets/02-FSD.md` into the target project. Fill each `{{...}}` placeholder.
-3. Use `assets/02-RTM.md` to map upstream `BR-...` to functional requirements (`FR-...`), acceptance criteria (`AC-...`), and downstream test cases (`TC-...`).
+3. For cross-phase requirements tracing, map upstream `BR-...` to functional requirements (`FR-...`), acceptance criteria (`AC-...`), and test cases (`TC-...`) using the canonical Master RTM from `engineering-docs`.
 4. Validate the draft using `assets/02-Checklist-Review.md` before requesting technical and product sign-off.
 
 ## Decisions that materially change the result
